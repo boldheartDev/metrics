@@ -1,0 +1,50 @@
+<div class="page__content">
+  <div class="container scroll-div">
+    <div style="height: 100%; display: flex; margin: 0 auto;">
+     
+
+      <div class="data__contain">
+        <div class="data__select">
+          <label>User</label>
+          <select class="source" #u (change)="setUser(u.value)">
+            <option value="" disabled>Select a user</option>
+            <ng-container *ngFor="let user of users">
+              <option [value]="user.id">
+                {{ user.name }}
+              </option>
+            </ng-container>
+          </select>
+        </div>
+
+        <div class="data__dates">
+          <div class="data__date-item">
+            <label>Start</label>
+            <app-date-time-picker (dateChangeEvent)="handleSetStart($event)"></app-date-time-picker>
+          </div>
+
+          <p>-</p>
+
+          <div class="data__date-item">
+            <label>End</label>
+            <app-date-time-picker (dateChangeEvent)="handleSetEnd($event)"></app-date-time-picker>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn blue" [disabled]="!startDate || !endDate || !userSelect" (click)="handleGetDials()">Get metrics</button>
+        </div>
+
+        <div class="data__content">
+          <div class="loadin g-contain" *ngIf="isLoading">
+            <app-spinner [spinnerSize]="'medium'" [spinnerColor]="'red'"></app-spinner>
+          </div>
+
+          <p *ngIf="dials">Dials completed: {{ dials.dials.length }}</p>
+          <p *ngIf="dials">CWP (GAC/CIS/DNC/UNQ): {{ dials.cwp.length + dials.cwpInf.length + dials.dnc.length + dials.unq.length}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

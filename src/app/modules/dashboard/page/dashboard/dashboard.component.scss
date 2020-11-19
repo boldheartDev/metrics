@@ -1,0 +1,33 @@
+.page__content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.data__contain{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  label {
+    color: #999;
+    font-weight: 400;
+  }
+}
+
+.data__select {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column
+}
+
+.data__dates {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+
+  p {
+    margin: 0 1em;
+    padding-bottom: 0.4em;
+  }
+}

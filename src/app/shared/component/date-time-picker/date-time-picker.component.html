@@ -1,0 +1,20 @@
+<p class="alert" *ngIf="callType === 'cis_formal' || callType === 'gac' || callType === 'connect'">All times are set to ET</p>
+
+<div class="date-time-contain">
+  <input [value]="date ? (date | date: 'yyyy-MM-dd') : null" class="date" id="date" #d type="date" (change)="setDate(d.value)" [(ngModel)]="date"/>
+
+  <ng-container *ngIf="callType === 'cis_formal' || callType === 'gac' || callType === 'connect'">
+    <select id="hours" #h (change)="setTime('hour', h.value)">
+      <option *ngFor="let hr of hours" [value]="hr.value" [selected]="hr.value === hour">{{ hr.name }}</option>
+    </select>
+
+    <select id="minutes" #m (change)="setTime('minute', m.value)" [(ngModel)]="minute">
+      <option *ngFor="let min of minutes" [value]="min">{{ min }}</option>
+    </select>
+
+    <select id="period" #p (change)="setTime('period', p.value)" [(ngModel)]="period">
+        <option *ngFor="let per of periods" [value]="per">{{ per }}</option>
+    </select>
+  </ng-container>
+  
+</div>

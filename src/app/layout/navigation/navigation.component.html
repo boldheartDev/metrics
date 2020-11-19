@@ -1,0 +1,41 @@
+<div class="nav-header">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="header-logo">
+        <img src="../../../assets/img/bh-logo.svg" >
+      </div>
+      <div class="header-links">
+        <a *ngFor="let item of navItems" routerLink="/{{item.link}}"  routerLinkActive="active">
+          <span class="icon">
+            <fa-icon [icon]="item.icon"></fa-icon>
+            <p>{{ item.title }}</p>
+          </span>
+        </a>
+      </div>
+      <!--div class="header-search">
+        <input type="text" [(ngModel)]="searchInput" placeholder="Search" (keyup)="updateSearch($event.target.value);" />
+      </div-->
+      <div class="header-profile">
+        <div class="identity">
+          <p class="profile-name white-text no-mar">
+            {{ currentUser.FirstName[0] }}{{ currentUser.LastName[0] }}
+          </p>
+        </div>
+        <div class="profile-menu-contain">
+          <button (click)="toggleProfileMenu()">
+            <fa-icon [icon]="faChevronDown"></fa-icon>
+          </button>
+          <div class="profile-menu" *ngIf="showProfileMenu">
+            <div>
+              <button (click)="handleLogout()" class="logout-btn" >Log out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--ng-container *ngIf="showSearchResults">
+  <app-search-results (closeSearchResultsEvent)="closeSearchResults($event)" [search]="searchValue"></app-search-results>
+</ng-container-->
